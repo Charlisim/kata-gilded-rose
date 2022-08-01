@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "24B11C3E-475A-4D6F-9822-E467BD680505",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "GildedRoseTests",
+        "name" : "GildedRoseTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -29,7 +29,18 @@ class GildedRoseTests: XCTestCase {
         app.updateQuality()
         XCTAssertEqual(app.items[0].quality, 3)
     }
-    
+    func testConjuredDecreaseDoubleSpeedQualityTime() throws {
+        let items = [Item(name: "Conjured", sellIn: 5, quality: 5)]
+        let app = GildedRose(items: items)
+        app.updateQuality()
+        XCTAssertEqual(app.items[0].quality, 3)
+    }
+    func testConjuredDontReachNegativesQualityTime() throws {
+        let items = [Item(name: "Conjured", sellIn: 5, quality: 1)]
+        let app = GildedRose(items: items)
+        app.updateQuality()
+        XCTAssertNotEqual(app.items[0].quality, -1)
+    }
     func testAgeBrieIncreaseQualityTime() throws {
         let items = [Item(name: "Aged Brie", sellIn: 5, quality: 5)]
         let app = GildedRose(items: items)

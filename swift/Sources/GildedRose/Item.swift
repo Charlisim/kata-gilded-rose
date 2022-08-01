@@ -3,6 +3,7 @@ public enum ItemType: String, RawRepresentable {
     case agedBrie
     case sulfuras
     case backstagePasses
+    case conjured
     
     
     public init?(rawValue: String) {
@@ -13,6 +14,8 @@ public enum ItemType: String, RawRepresentable {
             self = .backstagePasses
         case "Sulfuras, Hand of Ragnaros":
             self = .sulfuras
+        case "Conjured":
+            self = .conjured
         default:
             self = .regular
         }
@@ -54,6 +57,41 @@ public class RegularItem: BaseItem{
         self.itemType = .regular
     }
     public func updateQuality() {
+        if quality > 0 {
+            self.quality = self.quality - 1
+        }
+        self.sellIn = self.sellIn - 1
+
+        if sellIn < 0, quality > 0 {
+            self.quality = self.quality - 1
+
+        }
+
+    }
+    
+}
+
+public class ConjuredItem: BaseItem{
+    
+    
+    public var name: String
+    
+    public var sellIn: Int
+    
+    public var quality: Int
+    
+    public var itemType: ItemType
+    
+    public required init(name: String, sellIn: Int, quality: Int) {
+        self.name = name
+        self.sellIn = sellIn
+        self.quality = quality
+        self.itemType = .regular
+    }
+    public func updateQuality() {
+        if quality > 0 {
+            self.quality = self.quality - 1
+        }
         if quality > 0 {
             self.quality = self.quality - 1
         }

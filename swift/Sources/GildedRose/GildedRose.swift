@@ -27,6 +27,8 @@ public class GildedRose {
             return SulfurasItem(name: name, sellIn: sellIn, quality: quality)
         case .backstagePasses:
             return BackstagePasses(name: name, sellIn: sellIn, quality: quality)
+        case .conjured:
+            return ConjuredItem(name: name, sellIn: sellIn, quality: quality)
         }
     }
 }

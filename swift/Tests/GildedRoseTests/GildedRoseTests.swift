@@ -34,7 +34,7 @@ class GildedRoseTests: XCTestCase {
         let items = [Item(name: "Aged Brie", sellIn: 5, quality: 5)]
         let app = GildedRose(items: items)
         app.updateQuality()
-        XCTAssertEqual(app.items[0].quality, 7)
+        XCTAssertEqual(app.items[0].quality, 6)
     }
     
     func testAgeBrieIncreaseQualityTimeLimitDay() throws {

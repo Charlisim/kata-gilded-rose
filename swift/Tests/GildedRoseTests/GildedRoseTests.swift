@@ -34,7 +34,7 @@ class GildedRoseTests: XCTestCase {
         let items = [Item(name: "Aged Brie", sellIn: 5, quality: 5)]
         let app = GildedRose(items: items)
         app.updateQuality()
-        XCTAssertEqual(app.items[0].quality, 6)
+        XCTAssertEqual(app.items[0].quality, 7)
     }
     
     func testAgeBrieIncreaseQualityTimeLimitDay() throws {
@@ -81,6 +81,13 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(app.items[0].quality, 20)
     }
     
+    func testSulfurasAlwaysKeepTheSameQualityDayPassedCanReact80() throws {
+        let items = [Item(name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 80)]
+        let app = GildedRose(items: items)
+        app.updateQuality()
+        XCTAssertEqual(app.items[0].quality, 80)
+    }
+    
     func testBackstageQualityIncreaseBy2_10Days() throws {
         let items = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 5)]
         let app = GildedRose(items: items)
@@ -105,7 +112,7 @@ class GildedRoseTests: XCTestCase {
         let items = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 1, quality: 5)]
         let app = GildedRose(items: items)
         app.updateQuality()
-        XCTAssertEqual(app.items[0].quality, 8)
+        XCTAssertEqual(app.items[0].quality, 0)
     }
     
     func testBackstageQualityDrops0_0Days() throws {
